@@ -1,0 +1,56 @@
+{
+    "name": "sample",
+    "version": "1.0.0",
+    "description": "sample content",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "initialize": "yarn add @housing/core@latest -S && node --es-module-specifier-resolution=node --experimental-modules ./node_modules/@housing/core && yarn",
+        "update": "yarn add @housing/core@latest && node --es-module-specifier-resolution=node --experimental-modules ./node_modules/@housing/core/scripts/update.js && yarn",
+        "build": "node --es-module-specifier-resolution=node --experimental-modules ./node_modules/@housing/core/scripts/build.js",
+        "build:prod": "NODE_ENV='production' node --es-module-specifier-resolution=node --experimental-modules ./node_modules/@housing/core/scripts/build.js",
+        "start": "yarn && node --es-module-specifier-resolution=node --experimental-modules ./node_modules/@housing/core/scripts/start.js",
+        "lint-staged": "./node_modules/.bin/lint-staged",
+        "lint:js": "node --es-module-specifier-resolution=node --experimental-modules ./node_modules/standard --fix ./**/*.js",
+        "precommit": "lint-staged"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/karan0797/sample.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/karan0797/sample/issues"
+    },
+    "homepage": "https://github.com/karan0797/sample#readme",
+    "dependencies": {
+        "@housing/core": "^1.3.53",
+        "@emotion/core": "10.0.27",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-redux": "7.2.0",
+        "react-router-dom": "^5.1.2",
+        "@material-ui/icons": "^4.9.1",
+        "date-fns": "^2.11.0",
+        "@date-io/date-fns": "^1.3.13"
+    },
+    "engines": {
+        "node": ">=12.16.1"
+    },
+    "devDependencies": {
+        "husky": "^4.2.3"
+    },
+    "lint-staged": {
+        "*.js": [
+            "prettier-standard --print-width 100",
+            "node ./node_modules/standard --fix",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
+}
